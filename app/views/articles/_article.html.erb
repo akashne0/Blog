@@ -1,0 +1,20 @@
+<!-- Post preview-->
+    <div class="post-preview">
+        <a href="<%= article_path(article) %>">
+            <h2 class="post-title"><%= article.title%></h2>
+            <h3 class="post-subtitle"><%= article.body%></h3>
+        </a>
+        <p class="post-meta">
+            Posted by
+            <span><%= article.user.name%></span>
+            on <%= article.updated_at.strftime("%Y-%m-%d %H:%M")%>
+        </p>
+    </div>
+    Likes: <%= article.get_upvotes.size%>
+    Dislikes: <%= article.get_downvotes.size%>
+   <%= button_to upvote_label(article, current_user), upvote_article_path(article ), method: :patch, style:upvote_label_styles(article, current_user), class: 'btn btn-small' %>
+   <%= button_to downvote_label(article, current_user), downvote_article_path(article), method: :patch, style:downvote_label_styles(article, current_user), class: 'btn btn-small' %>
+   
+<!-- Divider-->
+<hr class="my-4" />
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blog</title>
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+
+        <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+        <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+        <%= stylesheet_link_tag "style.css" %>
+    
+    </head>
+
+    <body>
+        <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav" style="background-color: #004953	">
+            <div class="container px-3 px-lg-4">                  
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-8 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= articles_path %>">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= about_path %>">About</a></li>
+                        <%if user_signed_in? %>
+                            <%if current_user.admin %>
+                                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= rails_admin_path %>">Admin</a></li>
+                            <%end%>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= new_article_path %>">New Article</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= destroy_user_session_path %>" data-method="delete">Sign Out</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= edit_user_registration_path %>">Edit Profile</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= edit_user_registration_path %>">Edit Profile</a></li>
+                            
+                        <% else %>  
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= new_user_session_path %>">Sign In</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= new_user_registration_path %>">Sign Up</a></li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <section>
+            <p class="notice" style="margin:none;padding;none"><%= notice %></p>
+            <p class="alert" style="margin:none;padding;none"><%= alert %></p>
+            <%= yield %>
+        </section>
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2022</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    </body>
+</html>

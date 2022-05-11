@@ -1,0 +1,13 @@
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <%= form_with model: [ @article, @article.comments.build ] do |form| %>
+                <div class="post-preview">
+                    <h3>Add a comment:</h3>
+                    <%= form.text_area :comment %><br>
+                     <%= form.submit class:'btn btn-secondary' %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div><br>

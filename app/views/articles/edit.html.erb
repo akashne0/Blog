@@ -1,0 +1,19 @@
+<header class="masthead" style="background-image: url(<%= asset_path 'edit-blog.jpg' %>)">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Edit Post</h2>
+                    </div>
+                    <div class="card-body">
+                        <%= render 'form' %>
+                    </div>
+                </div>           
+                <div class="site-heading">
+                    <a class="btn btn-primary text-uppercase" href="<%= articles_path%>">Back to Posts</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

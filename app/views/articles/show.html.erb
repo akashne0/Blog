@@ -1,0 +1,47 @@
+<header class="masthead" style="background-image: url(<%= asset_path 'home-bg.jpg' %>)">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div id="flash">
+                    <% flash.each do |key, value| %>
+                        <div class="flash alert <%= alert_class(key) %>"><%= value %></div>
+                    <% end %>
+                </div>
+                <div class="card" style="opacity:0.7; border:none">
+                    <div class="card-body" style="background-color:#909090;">
+                        <div class="my-5">
+                            <div class="site-heading">
+                                <span><%= image_tag @article.image, style:"width:200px; display:center;" %></span>
+                            </div>
+                            <div class="site-heading">   
+                                <h1><%= @article.title %></h1>
+                                <span class="subheading"><%= @article.body %></span>
+                            </div>
+                            <br>
+                            <div class="site-heading">
+                            <%if can? :update, @article %>
+                                <a class="btn btn-primary text-uppercase" href="<%= edit_article_path(@article) %>">Edit Post</a>
+                                <a class="btn btn-danger text-uppercase" href="<%= articles_delete_path %>" data-method="delete">Delete Post</a><%end%>
+                                <a class="btn btn-success text-uppercase" href="<%= articles_path%>">Back to Posts</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--Displaying all comments -->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <h3 class="post-title">Comments:</h3><br>
+           <h4><%= render @article.comments %></h4>
+        </div>  
+    </div>
+</div>
+<br>
+
+
+<%= render 'comments/form' %>

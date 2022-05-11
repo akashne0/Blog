@@ -1,0 +1,13 @@
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+                <h4 class="post-subtitle"><%= comment.comment %></h4>
+                <%if can? :update, @article %>
+                 <h4 class="post-subtitle"><%= button_to "Destroy Comment", [comment.article, comment], data: {
+                            turbo_method: :delete,
+                            turbo_confirm: "Are you sure?"
+                    }, class:'btn btn-primary' %></h4><%end%>                 
+            <hr class="my-4" />
+        </div>  
+    </div>
+</div>
