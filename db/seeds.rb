@@ -8,14 +8,14 @@
 
 #Create an Admin user
 User.create!(
-    name: 'akash'
-    email: 'admin@test.com'
+    name: 'akash',
+    email: 'admin@test.com',
     password: '123456789',
     password_confirmation: '123456789',
     admin: true)
   #CreateaNormal user
   User.create!(
-    email: 'user@test.com'
+    email: 'user@test.com',
     password: '123456789',
     password_confirmation: '123456789',
     admin: false
