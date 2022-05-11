@@ -9,14 +9,17 @@
 #Create an Admin user
 User.create!(
     name: 'akash',
-    email: 'aks@gmail.com',
+    email: 'admin@gmail.com',
     password: '123456789',
     password_confirmation: '123456789',
+    confirmed_at: Time.now,
     admin: true)
   #CreateaNormal user
   User.create!(
+    name: 'akki',
     email: 'asingh@gmail.com',
     password: '123456789',
     password_confirmation: '123456789',
+    confirmed_at: Time.now,
     admin: false
   )

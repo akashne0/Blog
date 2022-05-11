@@ -23,6 +23,20 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = { :address => '127.0.0.1', :port => 1025 }
   config.action_mailer.raise_delivery_errors = false
 
+  #for gmail
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  # address:              'smtp.gmail.com',
+  # port:                 587,
+  # domain:               'blog-app-akash.herokuapp.com',
+  # user_name:            '<username>',
+  # password:             '<password>',
+  # authentication:       'plain',
+  # enable_starttls_auto: true,
+  # open_timeout:         5,
+  # read_timeout:         5 }
+
+
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?
