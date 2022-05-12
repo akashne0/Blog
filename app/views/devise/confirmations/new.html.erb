@@ -1,16 +1,32 @@
-<h2>Resend confirmation instructions</h2>
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+              <p class="notice" style="margin:none;padding;none"><%= notice %></p>
+              <p class="alert" style="margin:none;padding;none"><%= alert %></p>  
+                <div class="card" style="margin-top:20px">
+                    <div class="card-header">
+                        <h2>Resend confirmation Instructions</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="my-5">
+                              <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+                                <%= render "devise/shared/error_messages", resource: resource %>
+                                <div class="field">
+                                  <%= f.label :email %><br />
+                                  <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+                                </div><br>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+                                <div class="actions">
+                                  <%= f.submit "Resend confirmation instructions" %>
+                                </div><br>
+                              <% end %>
+                              <%= render "devise/shared/links" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
